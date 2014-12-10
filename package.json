@@ -1,0 +1,36 @@
+{
+  "name": "hapi-router",
+  "version": "1.0.0",
+  "description": "Opinionated route loader for hapi",
+  "main": "./lib",
+  "scripts": {
+    "test": "istanbul cover _mocha --"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bsiddiqi/hapi-router.git"
+  },
+  "keywords": [
+    "hapi",
+    "spumko",
+    "routes",
+    "router"
+  ],
+  "author": "Basil Siddiqui <basil.siddiqui@gmail.com> (https://bsiddiqui.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bsiddiqi/hapi-router/issues"
+  },
+  "homepage": "https://github.com/bsiddiqui/hapi-router",
+  "devDependencies": {
+    "chai": "1",
+    "chai-as-promised": "4",
+    "hapi": "7",
+    "istanbul": "~0.3.2",
+    "mocha": "1"
+  },
+  "peerDependencies": {
+    "hapi": "6 || 7"
+  },
+  "dependencies": {}
+}
