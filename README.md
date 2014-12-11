@@ -1,4 +1,4 @@
-hapi-router [![Build Status](https://travis-ci.org/bsiddiqui/hapi-router.svg?branch=master)](https://travis-ci.org/bsiddiqui/hapi-router)
+hapi-router [![Build Status](https://travis-ci.org/bsiddiqui/hapi-router.svg?branch=master)](https://travis-ci.org/bsiddiqui/hapi-router) [![Code Climate](https://codeclimate.com/github/bsiddiqui/hapi-router/badges/gpa.svg)](https://codeclimate.com/github/bsiddiqui/hapi-router) [![Test Coverage](https://codeclimate.com/github/bsiddiqui/hapi-router/badges/coverage.svg)](https://codeclimate.com/github/bsiddiqui/hapi-router)
 ==========
 
 Opinionated route loader for [hapi](https://github.com/spumko/hapi).
