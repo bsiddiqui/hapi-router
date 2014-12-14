@@ -10,7 +10,7 @@ $ npm install hapi-router
 ```
 
 ```js
-pack.register({
+server.register({
   plugin: require('hapi-router')
   options: { routesDir: __dirname + '/routes/' }
 }, function (err) {

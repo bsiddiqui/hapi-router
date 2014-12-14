@@ -7,26 +7,27 @@ chai.use(require('chai-as-promised'));
 var Hapi    = require('hapi');
 
 describe('hapi-router', function () {
+  var server;
+
+  beforeEach(function () {
+    server = new Hapi.Server();
+    server.connection();
+  });
+
   function register (options) {
-    server.pack.register({
-      plugin: require('../'),
+    server.register({
+      register: require('../'),
       options: options
     }, function (err) {
       if (err) throw err;
     });
   }
 
-  var server;
-
-  beforeEach(function () {
-    server = new Hapi.Server();
-  });
-
   it('can load routes', function () {
     register({
       routesDir: __dirname + '/routes/'
     });
 
-    expect(server.table()).to.have.length(2);
+    expect(server.connections[0].table()).to.have.length(2);
   });
 });
