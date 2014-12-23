@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bsiddiqui/hapi-router.git"
+    "url": "git://github.com/enjoy/hapi-router.git"
   },
   "keywords": [
     "hapi",
@@ -16,12 +16,12 @@
     "routes",
     "router"
   ],
-  "author": "Basil Siddiqui <basil.siddiqui@gmail.com> (https://bsiddiqui.com)",
+  "author": "Enjoy",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bsiddiqi/hapi-router/issues"
   },
-  "homepage": "https://github.com/bsiddiqui/hapi-router",
+  "homepage": "https://github.com/enjoy/hapi-router",
   "devDependencies": {
     "chai": "^1.10.0",
     "chai-as-promised": "^4.1.1",
