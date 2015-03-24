@@ -23,11 +23,28 @@ describe('hapi-router', function () {
     });
   }
 
-  it('can load routes', function () {
+  it('can load routes recursively', function () {
     register({
-      routesDir: __dirname + '/routes/'
+      routes: 'test/routes/**/*.js'
     });
 
     expect(server.connections[0].table()).to.have.length(2);
+  });
+
+  it('can ignore specific routes', function () {
+    register({
+      routes: 'test/routes/**/*.js',
+      ignore: 'test/routes/**/*1.js'
+    });
+
+    expect(server.connections[0].table()).to.have.length(1);
+  });
+
+  it('can match specific routes', function () {
+    register({
+      routes: 'test/routes/**/*2.js'
+    });
+
+    expect(server.connections[0].table()).to.have.length(1);
   });
 });

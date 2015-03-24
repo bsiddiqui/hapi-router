@@ -32,5 +32,7 @@
   "peerDependencies": {
     "hapi": "^8.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "glob": "^5.0.3"
+  }
 }
