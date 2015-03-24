@@ -13,7 +13,7 @@ $ npm install hapi-router
 server.register({
   register: require('hapi-router')
   options: {
-    routes: 'src/**/*Routes.js' // uses glob to include files
+    routes: 'src/**/*Route.js' // uses glob to include files
   }
 }, function (err) {
   if (err) throw err;
@@ -23,9 +23,9 @@ server.register({
 ## Options
 
 The following required `options` should be provided at registration:
-* `routes`: the 'glob' pattern you would like to include
+* `routes`: the [glob](https://github.com/enjoy/hapi-router#glob-primer) pattern you would like to include
 
-The follow optional `options` can be provided at registration:
+The following optional `options` can be provided at registration:
 * `ignore`: the pattern or an array of patterns to exclude
 * `cwd`: the current working directory in which to search (defaults to `process.cwd()`)
 
@@ -53,7 +53,9 @@ module.exports = [
 ]
 ```
 
-## Glob Primer (taken from [isaacs](https://github.com/isaacs/node-glob))
+## Glob Primer
+From [isaacs](https://github.com/isaacs/node-glob):
+
 "Globs" are the patterns you type when you do stuff like `ls *.js` on
 the command line, or put `build/*` in a `.gitignore` file.
 
