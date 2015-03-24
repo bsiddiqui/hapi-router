@@ -1,7 +1,7 @@
 #hapi-router
 [![Build Status](https://travis-ci.org/enjoy/hapi-router.svg?branch=master)](https://travis-ci.org/enjoy/hapi-router) [![Code Climate](https://codeclimate.com/github/enjoy/hapi-router/badges/gpa.svg)](https://codeclimate.com/github/enjoy/hapi-router) [![Test Coverage](https://codeclimate.com/github/enjoy/hapi-router/badges/coverage.svg)](https://codeclimate.com/github/enjoy/hapi-router) [![Version](https://badge.fury.io/js/hapi-router.svg)](http://badge.fury.io/js/hapi-router) [![Downloads](http://img.shields.io/npm/dm/hapi-router.svg)](https://www.npmjs.com/package/hapi-router)
 
-Opinionated route loader for [hapi](https://github.com/spumko/hapi).
+Route loader for [hapi](https://github.com/spumko/hapi).
 
 ## Setup
 
@@ -12,7 +12,9 @@ $ npm install hapi-router
 ```js
 server.register({
   register: require('hapi-router')
-  options: { routesDir: __dirname + '/routes/' }
+  options: {
+    routes: 'src/**/*Routes.js' // uses glob to include files
+  }
 }, function (err) {
   if (err) throw err;
 });
@@ -21,10 +23,15 @@ server.register({
 ## Options
 
 The following required `options` should be provided at registration:
-* `routesDir`: the path to your routes directory
+* `routes`: the 'glob' pattern you would like to include
+
+The follow optional `options` can be provided at registration:
+* `ignore`: the pattern or an array of patterns to exclude
+* `cwd`: the current working directory in which to search (defaults to `process.cwd()`)
+
 
 ## Specifying Routes
-Any `.js` files in your routes directory will be loaded - supports nested routes
+Any files that match your routes glob will be loaded
 
 Example route file:
 ```js
@@ -44,4 +51,36 @@ module.exports = [
     }
   }
 ]
+```
+
+## Glob Primer (taken from [isaacs](https://github.com/isaacs/node-glob))
+"Globs" are the patterns you type when you do stuff like `ls *.js` on
+the command line, or put `build/*` in a `.gitignore` file.
+
+The following characters have special magic meaning when used in a
+path portion:
+
+* `*` Matches 0 or more characters in a single path portion
+* `?` Matches 1 character
+* `[...]` Matches a range of characters, similar to a RegExp range.
+If the first character of the range is `!` or `^` then it matches
+any character not in the range.
+* `!(pattern|pattern|pattern)` Matches anything that does not match
+any of the patterns provided.
+* `?(pattern|pattern|pattern)` Matches zero or one occurrence of the
+patterns provided.
+* `+(pattern|pattern|pattern)` Matches one or more occurrences of the
+patterns provided.
+* `*(a|b|c)` Matches zero or more occurrences of the patterns provided
+* `@(pattern|pat*|pat?erN)` Matches exactly one of the patterns
+provided
+* `**` If a "globstar" is alone in a path portion, then it matches
+zero or more directories and subdirectories searching for matches.
+It does not crawl symlinked directories.
+
+Example globs:
+```js
+'routes/*.js'    // match all js files in the routes directory
+'routes/**/*.js' // recursively match all js files in the routes directory
+'**/*Route.js'   // match all js files that end with 'Route'
 ```
