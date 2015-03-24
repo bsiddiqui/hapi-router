@@ -31,6 +31,14 @@ describe('hapi-router', function () {
     expect(server.connections[0].table()).to.have.length(2);
   });
 
+  it('can match specific routes', function () {
+    register({
+      routes: 'test/routes/**/*2.js'
+    });
+
+    expect(server.connections[0].table()).to.have.length(1);
+  });
+
   it('can ignore specific routes', function () {
     register({
       routes: 'test/routes/**/*.js',
@@ -40,11 +48,12 @@ describe('hapi-router', function () {
     expect(server.connections[0].table()).to.have.length(1);
   });
 
-  it('can match specific routes', function () {
+  it('can specify cwd', function () {
     register({
-      routes: 'test/routes/**/*2.js'
+      routes: 'routes/**/*.js',
+      cwd: process.cwd() + '/test'
     });
 
-    expect(server.connections[0].table()).to.have.length(1);
+    expect(server.connections[0].table()).to.have.length(2);
   });
 });
