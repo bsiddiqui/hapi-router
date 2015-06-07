@@ -11,7 +11,7 @@ $ npm install hapi-router
 
 ```js
 server.register({
-  register: require('hapi-router')
+  register: require('hapi-router'),
   options: {
     routes: 'src/**/*Route.js' // uses glob to include files
   }
