@@ -23,6 +23,17 @@ describe('hapi-router', function () {
     });
   }
 
+  it('can take an array of route patterns', function () {
+    register({
+      routes: [
+        'test/routes/*.js',
+        'test/routes/api/*.js'
+      ]
+    });
+
+    expect(server.connections[0].table()).to.have.length(2);
+  });
+
   it('can load routes recursively', function () {
     register({
       routes: 'test/routes/**/*.js'
