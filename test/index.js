@@ -1,26 +1,28 @@
-'use strict';
+'use strict'
 
-var chai   = require('chai');
-var expect = chai.expect;
-chai.use(require('chai-as-promised'));
+/* global describe, it, beforeEach */
 
-var Hapi    = require('hapi');
+var chai = require('chai')
+var expect = chai.expect
+chai.use(require('chai-as-promised'))
+
+var Hapi = require('hapi')
 
 describe('hapi-router', function () {
-  var server;
+  var server
 
   beforeEach(function () {
-    server = new Hapi.Server();
-    server.connection();
-  });
+    server = new Hapi.Server()
+    server.connection()
+  })
 
   function register (options) {
     server.register({
       register: require('../'),
       options: options
     }, function (err) {
-      if (err) throw err;
-    });
+      if (err) throw err
+    })
   }
 
   it('can take an array of route patterns', function () {
@@ -29,42 +31,42 @@ describe('hapi-router', function () {
         'test/routes/*.js',
         'test/routes/api/*.js'
       ]
-    });
+    })
 
-    expect(server.connections[0].table()).to.have.length(2);
-  });
+    expect(server.connections[0].table()).to.have.length(2)
+  })
 
   it('can load routes recursively', function () {
     register({
       routes: 'test/routes/**/*.js'
-    });
+    })
 
-    expect(server.connections[0].table()).to.have.length(2);
-  });
+    expect(server.connections[0].table()).to.have.length(2)
+  })
 
   it('can match specific routes', function () {
     register({
       routes: 'test/routes/**/*2.js'
-    });
+    })
 
-    expect(server.connections[0].table()).to.have.length(1);
-  });
+    expect(server.connections[0].table()).to.have.length(1)
+  })
 
   it('can ignore specific routes', function () {
     register({
       routes: 'test/routes/**/*.js',
       ignore: 'test/routes/**/*1.js'
-    });
+    })
 
-    expect(server.connections[0].table()).to.have.length(1);
-  });
+    expect(server.connections[0].table()).to.have.length(1)
+  })
 
   it('can specify cwd', function () {
     register({
       routes: 'routes/**/*.js',
       cwd: process.cwd() + '/test'
-    });
+    })
 
-    expect(server.connections[0].table()).to.have.length(2);
-  });
-});
+    expect(server.connections[0].table()).to.have.length(2)
+  })
+})
