@@ -1,13 +1,16 @@
-#hapi-router
+# hapi-router
+
 [![Build Status](https://travis-ci.org/bsiddiqui/hapi-router.svg?branch=master)](https://travis-ci.org/bsiddiqui/hapi-router) [![Code Climate](https://codeclimate.com/github/bsiddiqui/hapi-router/badges/gpa.svg)](https://codeclimate.com/github/bsiddiqui/hapi-router) [![Test Coverage](https://codeclimate.com/github/bsiddiqui/hapi-router/badges/coverage.svg)](https://codeclimate.com/github/bsiddiqui/hapi-router) [![Version](https://badge.fury.io/js/hapi-router.svg)](http://badge.fury.io/js/hapi-router) [![Downloads](http://img.shields.io/npm/dm/hapi-router.svg)](https://www.npmjs.com/package/hapi-router)
 
 Route loader for [hapi](https://github.com/spumko/hapi).
 
-## Setup
+## Install
 
 ```bash
 $ npm install hapi-router
 ```
+
+## Usage
 
 ```js
 server.register({
@@ -22,15 +25,28 @@ server.register({
 
 ## Options
 
-The following required `options` should be provided at registration:
-* `routes`: the [glob](https://github.com/bsiddiqui/hapi-router#glob-primer) pattern you would like to include
+##### routes
 
-The following optional `options` can be provided at registration:
-* `ignore`: the pattern or an array of patterns to exclude
-* `cwd`: the current working directory in which to search (defaults to `process.cwd()`)
+*Required* <br/>
+Type: `string` / `array`
+
+The [glob](https://github.com/bsiddiqui/hapi-router#glob-primer) pattern you would like to include
+
+##### ignore
+
+Type: `string` / `array`
+
+The pattern or an array of patterns to exclude
+
+##### cwd
+
+Type: `string`
+
+The current working directory in which to search (defaults to `process.cwd()`)
 
 
 ## Specifying Routes
+
 Any files that match your routes glob will be loaded
 
 Example route file:
@@ -54,6 +70,14 @@ module.exports = [
 ```
 
 ## Glob Primer
+
+Example globs:
+```js
+'routes/*.js'    // match all js files in the routes directory
+'routes/**/*.js' // recursively match all js files in the routes directory
+'**/*Route.js'   // match all js files that end with 'Route'
+```
+
 From [isaacs](https://github.com/isaacs/node-glob):
 
 "Globs" are the patterns you type when you do stuff like `ls *.js` on
@@ -79,10 +103,3 @@ provided
 * `**` If a "globstar" is alone in a path portion, then it matches
 zero or more directories and subdirectories searching for matches.
 It does not crawl symlinked directories.
-
-Example globs:
-```js
-'routes/*.js'    // match all js files in the routes directory
-'routes/**/*.js' // recursively match all js files in the routes directory
-'**/*Route.js'   // match all js files that end with 'Route'
-```
