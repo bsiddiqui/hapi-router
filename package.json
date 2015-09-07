@@ -34,6 +34,7 @@
     "hapi": "8 || 9"
   },
   "dependencies": {
+    "cast-array": "^1.0.0",
     "glob": "^5.0.3"
   }
 }
