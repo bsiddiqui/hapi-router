@@ -1,72 +1,73 @@
 'use strict'
 
-/* global describe, it, beforeEach */
-
-var chai = require('chai')
-var expect = chai.expect
-chai.use(require('chai-as-promised'))
-
+var lab = exports.lab = require('lab').script()
 var Hapi = require('hapi')
+var expect = require('code').expect
 
-describe('hapi-router', function () {
+lab.describe('hapi-router', () => {
   var server
 
-  beforeEach(function () {
-    server = new Hapi.Server()
-    server.connection()
+  lab.beforeEach(() => {
+    return (server = new Hapi.Server())
   })
 
-  function register (options) {
-    server.register({
-      register: require('../'),
-      options: options
-    }, function (err) {
-      if (err) throw err
+  async function register (options) {
+    await server.register({
+      plugin: require('../'),
+      options
     })
   }
 
-  it('can take an array of route patterns', function () {
-    register({
+  lab.test('can take an array of route patterns', async () => {
+    await register({
       routes: [
         'test/routes/*.js',
         'test/routes/api/*.js'
       ]
     })
 
-    expect(server.connections[0].table()).to.have.length(2)
+    expect(server.table()).to.have.length(2)
   })
 
-  it('can load routes recursively', function () {
+  lab.test('can load routes recursively', async () => {
     register({
       routes: 'test/routes/**/*.js'
     })
 
-    expect(server.connections[0].table()).to.have.length(2)
+    expect(server.table()).to.have.length(2)
   })
 
-  it('can match specific routes', function () {
+  lab.test('can match specific routes', async () => {
     register({
       routes: 'test/routes/**/*2.js'
     })
 
-    expect(server.connections[0].table()).to.have.length(1)
+    expect(server.table()).to.have.length(1)
   })
 
-  it('can ignore specific routes', function () {
+  lab.test('can ignore specific routes', async () => {
     register({
       routes: 'test/routes/**/*.js',
       ignore: 'test/routes/**/*1.js'
     })
 
-    expect(server.connections[0].table()).to.have.length(1)
+    expect(server.table()).to.have.length(1)
   })
 
-  it('can specify cwd', function () {
+  lab.test('can specify cwd', async () => {
     register({
       routes: 'routes/**/*.js',
       cwd: process.cwd() + '/test'
     })
 
-    expect(server.connections[0].table()).to.have.length(2)
+    expect(server.table()).to.have.length(2)
   })
 })
+  // function register (options) {
+  //   server.register({
+  //     plugin: require('../'),
+  //     options: {}
+  //   }, function (err) {
+  //     if (err) throw err
+  //   })
+  // }

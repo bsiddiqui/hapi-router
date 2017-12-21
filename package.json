@@ -4,7 +4,8 @@
   "description": "Opinionated route loader for hapi",
   "main": "./lib",
   "scripts": {
-    "test": "standard && istanbul cover _mocha --"
+    "test-dirty": "lab --verbose --colors --assert code --timeout 10000",
+    "test": "standard && lab --verbose --colors --assert code --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -23,15 +24,13 @@
   },
   "homepage": "https://github.com/bsiddiqui/hapi-router",
   "devDependencies": {
-    "chai": "^1.10.0",
-    "chai-as-promised": "^4.1.1",
-    "hapi": ">=8 || <=13",
-    "istanbul": "^0.3.2",
-    "mocha": "^2.0.1",
-    "standard": "^5.2.1"
+    "code": "^5.1.2",
+    "hapi": "^17.0.0",
+    "lab": "^15.1.2",
+    "standard": "^10.0.3"
   },
   "peerDependencies": {
-    "hapi": ">=8 || <=13"
+    "hapi": "^17.0.0"
   },
   "dependencies": {
     "cast-array": "^1.0.0",

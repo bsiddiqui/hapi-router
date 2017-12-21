@@ -4,23 +4,34 @@
 
 Route loader for [hapi](https://github.com/spumko/hapi).
 
+## Hapi v17
+
+`hapi-router` requires Hapi v17. If you're using a previous version of Hapi, use `hapi-router@3.5.0`
+
 ## Install
 
 ```bash
-$ npm install hapi-router
+// If you're using Hapi v17
+$ npm i -S hapi-router
+
+// If you're using < Hapi v17
+$ npm i -S hapi-router@3.5.0
 ```
 
 ## Usage
 
 ```js
-server.register({
-  register: require('hapi-router'),
-  options: {
-    routes: 'src/**/*Route.js' // uses glob to include files
-  }
-}, function (err) {
-  if (err) throw err;
-});
+try {
+  await server.register({
+    plugin: require('hapi-router'),
+    options: {
+      routes: 'src/**/*Route.js' // uses glob to include files
+    }
+  })
+} catch (err) {
+  // Handle err
+  throw err
+}
 ```
 
 ## Options
