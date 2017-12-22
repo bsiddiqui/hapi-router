@@ -4,8 +4,8 @@
   "description": "Opinionated route loader for hapi",
   "main": "./lib",
   "scripts": {
-    "test-dirty": "lab --verbose --colors --assert code --timeout 10000",
-    "test": "standard && lab --verbose --colors --assert code --timeout 10000"
+    "test": "standard && lab -r console -o stdout -r lcov -o lcov.info -v -C -a code -m 5000",
+    "test-dirty": "lab -v -C -a code -m 5000"
   },
   "repository": {
     "type": "git",

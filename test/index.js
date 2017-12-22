@@ -26,7 +26,7 @@ lab.describe('hapi-router', () => {
       ]
     })
 
-    expect(server.table()).to.have.length(2)
+    expect(server.table()).to.have.length(3)
   })
 
   lab.test('can load routes recursively', async () => {
@@ -34,7 +34,7 @@ lab.describe('hapi-router', () => {
       routes: 'test/routes/**/*.js'
     })
 
-    expect(server.table()).to.have.length(2)
+    expect(server.table()).to.have.length(3)
   })
 
   lab.test('can match specific routes', async () => {
@@ -51,7 +51,7 @@ lab.describe('hapi-router', () => {
       ignore: 'test/routes/**/*1.js'
     })
 
-    expect(server.table()).to.have.length(1)
+    expect(server.table()).to.have.length(2)
   })
 
   lab.test('can specify cwd', async () => {
@@ -60,7 +60,7 @@ lab.describe('hapi-router', () => {
       cwd: process.cwd() + '/test'
     })
 
-    expect(server.table()).to.have.length(2)
+    expect(server.table()).to.have.length(3)
   })
 })
   // function register (options) {
