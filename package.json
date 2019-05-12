@@ -27,7 +27,7 @@
     "@hapi/code": "^5.3.1",
     "@hapi/hapi": "^18.3.1",
     "lab": "^15.1.2",
-    "standard": "^10.0.3"
+    "standard": "^12.0.1"
   },
   "peerDependencies": {
     "@hapi/hapi": "^18.3.1"

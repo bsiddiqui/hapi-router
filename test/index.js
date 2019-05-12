@@ -63,11 +63,3 @@ lab.describe('hapi-router', () => {
     expect(server.table()).to.have.length(3)
   })
 })
-  // function register (options) {
-  //   server.register({
-  //     plugin: require('../'),
-  //     options: {}
-  //   }, function (err) {
-  //     if (err) throw err
-  //   })
-  // }
