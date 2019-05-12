@@ -1,10 +1,10 @@
 {
   "name": "hapi-router",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Opinionated route loader for hapi",
   "main": "./lib",
   "scripts": {
-    "test": "standard && lab -r console -o stdout -r lcov -o lcov.info -v -C -a code -m 5000",
+    "test": "standard && lab -r console -o stdout -r lcov -o lcov.info -v -C -a @hapi/code -m 5000",
     "test-dirty": "lab -v -C -a code -m 5000"
   },
   "repository": {
@@ -24,13 +24,13 @@
   },
   "homepage": "https://github.com/bsiddiqui/hapi-router",
   "devDependencies": {
-    "code": "^5.1.2",
-    "hapi": "^17.0.0",
+    "@hapi/code": "^5.3.1",
+    "@hapi/hapi": "^18.3.1",
     "lab": "^15.1.2",
     "standard": "^10.0.3"
   },
   "peerDependencies": {
-    "hapi": "^17.0.0"
+    "@hapi/hapi": "^18.3.1"
   },
   "dependencies": {
     "cast-array": "^1.0.0",
