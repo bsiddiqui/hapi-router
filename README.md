@@ -8,14 +8,14 @@ Route loader for [hapi](https://github.com/spumko/hapi).
 
 `hapi-router` requires Hapi v18.
 
-* Hapi 18, hapi-router@5
+* Hapi 18 and 19, hapi-router@5
 * Hapi 17, hapi-router@4
 * Hapi <= 16, hapi-router@3
 
 ## Install
 
 ```bash
-// If you're using Hapi v18
+// If you're using Hapi v18 or v19
 $ npm i -S hapi-router@5
 
 // If you're using Hapi v17
