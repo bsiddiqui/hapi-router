@@ -33,7 +33,6 @@
     "@hapi/hapi": ">= 18.3.1 < 20"
   },
   "dependencies": {
-    "cast-array": "^1.0.0",
     "glob-promise": "^5.0.0"
   }
 }
